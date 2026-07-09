@@ -17,7 +17,7 @@ from pyspark.sql.functions import (
     count,
     when,
     round,
-)
+ )
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s")
@@ -84,11 +84,11 @@ def write_category_kpis_to_dynamodb(spark_df, table_name, session):
                     logger.warning(f"Skipping row missing required fields: {row}")
                     continue
 
-                # Create a unique ID for each category+date combination
+                ## Create a unique ID for each category+date combination
                 category = item_dict_raw["category"]
                 order_date = item_dict_raw["order_date"]
 
-                # Use the custom encoder to handle date objects
+                ## Use the custom encoder to handle date objects
                 item_json = json.dumps(item_dict_raw, cls=DateEncoder)
                 item_dict = json.loads(item_json, parse_float=Decimal)
 
