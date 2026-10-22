@@ -1,6 +1,8 @@
 FROM python:3.9-slim
 
 # Install system dependencies including Java and Spark requirements
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     # Updated from 11 to 17
